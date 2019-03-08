@@ -10,7 +10,7 @@ setting their innerHTML without a container element.
 ```jsx
 import Fragment from 'react-dom-fragment';
 
-<Fragment dangerouslySetInnerHTML={ __html: '<h1>No containers here</h1>' } />
+<Fragment dangerouslySetInnerHTML={{ __html: '<h1>No containers here</h1>' }} />
 ```
 
 [React DOM Fragment] patches DOM updates so that unchanged portions of your
