@@ -1,14 +1,16 @@
 {
   "name": "react-dom-fragment",
-  "version": "0.6.0",
+  "version": "1.0.0",
   "description": "A React Fragment that supports dangerously setting innerHTML",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
-  "repository": "jonathantneal/react-dom-fragment",
-  "homepage": "https://github.com/jonathantneal/react-dom-fragment#readme",
-  "bugs": "https://github.com/jonathantneal/react-dom-fragment/issues",
+  "repository": "jsxtools/react-dom-fragment",
+  "homepage": "https://github.com/jsxtools/react-dom-fragment#readme",
+  "bugs": "https://github.com/jsxtools/react-dom-fragment/issues",
   "main": "index.js",
   "module": "index.mjs",
+  "unpkg": "ReactDOMFragment.min.js",
+  "jsdelivr": "ReactDOMFragment.min.js",
   "files": [
     "index.js",
     "index.js.map",
@@ -20,40 +22,49 @@
   ],
   "scripts": {
     "build": "npm run build:node && npm run build:browser && npm run build:browser:min",
-    "build:browser": "cross-env NODE_ENV=browser rollup -c .rollup.js --silent",
-    "build:browser:min": "cross-env NODE_ENV=browser:minified rollup -c .rollup.js --silent",
-    "build:node": "rollup -c .rollup.js --silent",
+    "build:browser": "cross-env NODE_ENV=browser rollup -c .rollup.js",
+    "build:browser:min": "cross-env NODE_ENV=browser:minified rollup -c .rollup.js",
+    "build:node": "rollup -c .rollup.js",
     "prepublishOnly": "npm test",
     "pretest": "npm run build",
     "test": "npm run test:js",
-    "test:js": "eslint index.js src/*.js src/lib/*.js --cache --ignore-path .gitignore --quiet"
+    "test:js": "eslint src/index.js --cache --ignore-path .gitignore --quiet"
   },
   "engines": {
-    "node": ">=4.0.0"
-  },
-  "dependencies": {
-    "domdiff": "^2.0.0"
+    "node": ">=10.0.0"
   },
   "peerDependencies": {
-    "react": "15 - 16"
+    "react": "^16"
   },
   "devDependencies": {
-    "@babel/core": "^7.1.5",
-    "@babel/preset-env": "^7.1.5",
-    "babel-eslint": "^10.0",
-    "cross-env": "^5.2.0",
-    "eslint": "^5.8",
-    "eslint-config-dev": "2.0",
-    "pre-commit": "^1.2",
-    "react": "^16.6.1",
-    "rollup": "^0.67",
-    "rollup-plugin-babel": "^4.0.3",
-    "rollup-plugin-node-resolve": "^3.4.0",
-    "rollup-plugin-terser": "^3.0.0"
+    "@babel/preset-env": "^7.9.5",
+    "babel-eslint": "^10.1.0",
+    "cross-env": "^7.0.2",
+    "eslint": "^6.8.0",
+    "magic-string": "^0.25.7",
+    "pre-commit": "^1.2.2",
+    "react": "^16.0.0",
+    "rollup": "^2.6.1",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-terser": "^5.3.0"
   },
   "eslintConfig": {
-    "extends": "dev",
-    "parser": "babel-eslint"
+    "extends": "eslint:recommended",
+    "parser": "babel-eslint",
+    "rules": {
+      "default-case": 0,
+      "eqeqeq": 0,
+      "no-eq-null": 0,
+      "no-param-reassign": 0,
+      "no-shadow": 0,
+      "semi": [
+        "error",
+        "never",
+        {
+          "beforeStatementContinuationChars": "never"
+        }
+      ]
+    }
   },
   "keywords": [
     "react",
@@ -67,5 +78,9 @@
     "text",
     "node",
     "javascript"
-  ]
+  ],
+  "dependencies": {
+    "@babel/core": "^7.9.0",
+    "rollup-plugin-eslint": "^7.0.0"
+  }
 }

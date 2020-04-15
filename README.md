@@ -1,11 +1,10 @@
-# React DOM Fragment [<img src="https://jonathantneal.github.io/react-logo.svg" alt="PostCSS" width="90" height="90" align="right">][React DOM Fragment]
+# React DOM Fragment [<img src="https://jonneal.dev/react-logo.svg" alt="React DOM Fragment" width="90" height="90" align="right">][React DOM Fragment]
 
-[![NPM Version][npm-img]][npm-url]
-[![Build Status][cli-img]][cli-url]
-[![Support Chat][git-img]][git-url]
+[<img alt="npm version" src="https://img.shields.io/npm/v/react-dom-fragment.svg" height="20">][npm-url]
+[<img alt="build status" src="https://img.shields.io/travis/jsxtools/react-dom-fragment/master.svg" height="20">][cli-url]
+[<img alt="support chat" src="https://img.shields.io/badge/support-chat-blue.svg" height="20">][git-url]
 
-[React DOM Fragment] lets you create [React Fragments] that support dangerously
-setting their innerHTML without a container element.
+[React DOM Fragment] lets you create [React Fragments] that support dangerously setting their innerHTML without a container element.
 
 ```jsx
 import Fragment from 'react-dom-fragment';
@@ -13,9 +12,7 @@ import Fragment from 'react-dom-fragment';
 <Fragment dangerouslySetInnerHTML={{ __html: '<h1>No containers here</h1>' }} />
 ```
 
-[React DOM Fragment] patches DOM updates so that unchanged portions of your
-code won’t be re-created. Dynamic elements like video, images, and iframes will
-not reload, even as attributes update that do not change their source.
+[React DOM Fragment] uses [React Reconciliation](https://reactjs.org/docs/reconciliation.html) so that unchanged portions of your HTML fragments aren’t recreated. Dynamic elements like video, images, and iframes will not reload, even as HTML around them changes.
 
 ```jsx
 import Fragment from 'react-dom-fragment';
@@ -28,43 +25,7 @@ import Fragment from 'react-dom-fragment';
 />
 ```
 
-Patching occurs at the deepest possible level without any container element
-so that even unchanged portions of Text Nodes are preserved.
-
-```jsx
-<p>
-  ...<Fragment dangerouslySetInnerHTML={{
-    __html: Math.floor(Math.random() * 100)
-  }} />...
-</p>
-
-/*
-1st Pass (__html === 4):
-  <p>
-    "..."
-    "4"
-    "..."
-  </p>
-
-2nd Pass (__html === 45):
-  <p>
-    "..."
-    "4"
-    "5"
-    "..."
-  </p>
-
-3rd Pass (__html === 50):
-  <p>
-    "..."
-    "50"
-    "..."
-  </p>
-*/
-```
-
-[React DOM Fragment] is still a [React Fragment][React Fragments] you can use
-as a drop-in replacement.
+[React DOM Fragment] is still a [React Fragment][React Fragments] which means you can use it as a drop-in replacement.
 
 ```jsx
 <Fragment>
@@ -90,14 +51,13 @@ import Fragment from 'react-dom-fragment';
 }} />
 ```
 
-React DOM Fragment will increase your bundle size by up to 2.5kB when minified
-and gzipped.
+React DOM Fragment will increase your bundle size by up to 1160 bytes when minified and gzipped.
 
-[React DOM Fragment]: https://github.com/jonathantneal/react-dom-fragment
+[React DOM Fragment]: https://github.com/jsxtools/react-dom-fragment
 [React Fragments]: https://reactjs.org/docs/fragments.html
 
-[cli-img]: https://img.shields.io/travis/jonathantneal/react-dom-fragment/master.svg
-[cli-url]: https://travis-ci.org/jonathantneal/react-dom-fragment
+[cli-img]: https://img.shields.io/travis/jsxtools/react-dom-fragment/master.svg
+[cli-url]: https://travis-ci.org/jsxtools/react-dom-fragment
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
 [git-url]: https://gitter.im/postcss/postcss
 [npm-img]: https://img.shields.io/npm/v/react-dom-fragment.svg
